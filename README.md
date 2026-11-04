@@ -58,8 +58,8 @@ Para isso, basta ir na aba `Actions` e clicar no botão verde.
 Em seguida, clone o seu repositório para uma pasta local e entre na pasta:
 
 ```
-$ git clone https://github.com/<SEU-USUARIO>/quiz
-$ cd quiz
+$ git clone https://github.com/<SEU-USUARIO>/test-quiz
+$ cd test-quiz
 ```
 
 ### Instale o pytest
