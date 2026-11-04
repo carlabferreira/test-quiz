@@ -136,3 +136,27 @@ def test_correct_selected_choices_with_too_many_selections():
 
     with pytest.raises(Exception):
         question.correct_selected_choices([choice1.id, choice2.id, choice3.id])
+
+@pytest.fixture
+def question_with_choices():
+    question = Question(title='q1', max_selections=2)
+    choice1 = question.add_choice('a', True)
+    choice2 = question.add_choice('b', False)
+    choice3 = question.add_choice('c', True)
+    return question, [choice1, choice2, choice3]
+
+def test_correct_selected_choices_with_fixture(question_with_choices):
+    question, choices = question_with_choices
+    choice1, choice2, choice3 = choices
+
+    correct_choices = question.correct_selected_choices([choice1.id, choice2.id])
+    
+    assert correct_choices == [choice1.id]
+
+def test_correct_selected_choices_with_fixture_multiple_correct(question_with_choices):
+    question, choices = question_with_choices
+    choice1, choice2, choice3 = choices
+
+    correct_choices = question.correct_selected_choices([choice1.id, choice3.id])
+    
+    assert correct_choices == [choice1.id, choice3.id]
